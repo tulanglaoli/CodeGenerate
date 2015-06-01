@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT View (#PCDATA|Datasets|Controls|Events|Properties|Include)*> 
+<!ATTLIST View 
+     skin CDATA "default"
+     dropDownBox CDATA "custom" 
+     enableClientDebug (true|false) "false"
+     showDialogOnLoadingData (true|false) "true"
+     checkRule (true|false) "false"
+     moduleName CDATA #IMPLIED
+     context CDATA #IMPLIED
+>
+
+<!ELEMENT Datasets (#PCDATA|Dataset)*>
+
+<!ELEMENT Dataset (#PCDATA|MasterLink|Fields|Events|Parameters|Properties|Data|CountData)*>
+<!ATTLIST Dataset 
+     id CDATA #REQUIRED  
+     type (Reference|Custom|Form|Wrapper|DropDown|SimpleQuery|SimpleUpdate) #REQUIRED
+     autoLoadPage (true|false) "false"
+     insertOnEmpty (true|false) "false"
+     loadDataAction CDATA #IMPLIED 
+     pageIndex CDATA "1"
+     pageSize CDATA "0"
+     readOnly CDATA "false"
+     clearDataForLoadPage (true|false) "true"
+     canInsert (true|false) "true"
+     passport CDATA #IMPLIED 
+     wrappedType (Sql|AutoSql|Marmot) #IMPLIED
+     tableName CDATA #IMPLIED 
+     loadOnPageOpen (true|false) "true"
+     showLoadingTip CDATA #IMPLIED
+     method CDATA #IMPLIED
+     async (true|false) "false"
+     resolver CDATA #IMPLIED
+     context CDATA #IMPLIED
+     connection CDATA #IMPLIED
+     sql CDATA #IMPLIED
+>
+
+<!ELEMENT Parameters (#PCDATA|Parameter)*>
+
+<!ELEMENT Parameter (#PCDATA)>
+<!ATTLIST Parameter 
+    name CDATA #IMPLIED
+    dataType CDATA #IMPLIED
+    value CDATA #IMPLIED
+>
+
+<!ELEMENT MasterLink EMPTY> 
+<!ATTLIST MasterLink 
+     detailKeyFields CDATA #IMPLIED
+     loadAsNeeded (true|false) "true"
+     masterDataset CDATA #IMPLIED
+     masterKeyFields CDATA #IMPLIED
+>
+
+<!ELEMENT Fields (#PCDATA|Field)*>
+
+<!ELEMENT Field (#PCDATA|Validator|Properties)*>
+<!ATTLIST Field 
+     name CDATA #REQUIRED
+     dataType (string|float|double|boolean|int|date|datetime|time|byte|short|long|bigdecimal) "string"
+     defaultValue CDATA #IMPLIED
+     dropDown CDATA #IMPLIED
+     editorType (text|textarea|checkbox|label|password|radio|checkgroup) #IMPLIED
+     label CDATA  #IMPLIED
+     format CDATA #IMPLIED
+     readOnly CDATA "false"
+     toolTip CDATA #IMPLIED
+     visible (true|false) "true"
+     align (left|right|center) #IMPLIED
+     valign (top|center|buttom) "center" 
+     inputForInsert (true|false) "true"
+     inputForUpdate (true|false) "true"
+     key (true|false) "false"
+     noProcess (true|false) "false"
+     valueOnEmpty CDATA #IMPLIED
+     selectOnly (true|false) "false"
+     valueProtected (true|false) "false"
+     tag CDATA #IMPLIED
+     supportsSum CDATA #IMPLIED
+     columnWidth CDATA #IMPLIED
+>
+
+<!ELEMENT Validator EMPTY>
+<!ATTLIST Validator 
+    errorMessage CDATA #IMPLIED
+    type (Required|Length|List|Range|Pattern|Custom) #IMPLIED 
+    maxLength CDATA #IMPLIED 
+    minLength CDATA #IMPLIED 
+    max CDATA #IMPLIED 
+    min CDATA #IMPLIED 
+    minMatchRule (ignore|allow_equals|not_allow_equals) #IMPLIED 
+    maxMatchRule (ignore|allow_equals|not_allow_equals) #IMPLIED 
+    values CDATA #IMPLIED 
+    pattern CDATA #IMPLIED 
+    method CDATA #IMPLIED 
+>
+
+<!ELEMENT Data (#PCDATA|Dynamic|PrepareParameters)*>
+<!ATTLIST Data 
+     type (statement|procedure) #REQUIRED
+     resultType (outParameter|resultSet) #IMPLIED 
+     outIndex CDATA #IMPLIED
+     fromData (true|false) "false"
+     procedureName CDATA #IMPLIED
+>
+
+<!ELEMENT CountData (#PCDATA|Dynamic|PrepareParameters)*> 
+<!ATTLIST CountData 
+     type (statement|procedure) #REQUIRED
+     resultType (outParameter|resultSet) #IMPLIED 
+     outIndex CDATA #IMPLIED
+     fromData (true|false) "false"
+     procedureName CDATA #IMPLIED
+>
+
+<!ELEMENT Dynamic (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST Dynamic
+	prepend (where|orderby|groupby|join|from|select) #REQUIRED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT isNotNull (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST isNotNull
+	prepend CDATA #IMPLIED
+	property CDATA #REQUIRED
+	open CDATA #IMPLIED
+	close CDATA #IMPLIED
+	compareProperty CDATA #IMPLIED
+	compareValue CDATA #IMPLIED
+	estimate (parameters|orderbys) #IMPLIED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT isNull (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST isNull
+	prepend CDATA #IMPLIED
+	property CDATA #REQUIRED
+	open CDATA #IMPLIED
+	close CDATA #IMPLIED
+	compareProperty CDATA #IMPLIED
+	compareValue CDATA #IMPLIED
+	estimate (parameters|orderbys) #IMPLIED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT isEqual (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST isEqual
+	prepend CDATA #IMPLIED
+	property CDATA #REQUIRED
+	open CDATA #IMPLIED
+	close CDATA #IMPLIED
+	compareProperty CDATA #IMPLIED
+	compareValue CDATA #IMPLIED
+	estimate (parameters|orderbys) #IMPLIED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT isNotEqual (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST isNotEqual
+	prepend CDATA #IMPLIED
+	property CDATA #REQUIRED
+	open CDATA #IMPLIED
+	close CDATA #IMPLIED
+	compareProperty CDATA #IMPLIED
+	compareValue CDATA #IMPLIED
+	estimate (parameters|orderbys) #IMPLIED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT isGreaterThan (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST isGreaterThan
+	prepend CDATA #IMPLIED
+	property CDATA #REQUIRED
+	open CDATA #IMPLIED
+	close CDATA #IMPLIED
+	compareProperty CDATA #IMPLIED
+	compareValue CDATA #IMPLIED
+	estimate (parameters|orderbys) #IMPLIED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT isGreaterEqual (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST isGreaterEqual
+	prepend CDATA #IMPLIED
+	property CDATA #REQUIRED
+	open CDATA #IMPLIED
+	close CDATA #IMPLIED
+	compareProperty CDATA #IMPLIED
+	compareValue CDATA #IMPLIED
+	estimate (parameters|orderbys) #IMPLIED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT isLessThan (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST isLessThan
+	prepend CDATA #IMPLIED
+	property CDATA #REQUIRED
+	open CDATA #IMPLIED
+	close CDATA #IMPLIED
+	compareProperty CDATA #IMPLIED
+	compareValue CDATA #IMPLIED
+	estimate (parameters|orderbys) #IMPLIED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT isLessEqual (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST isLessEqual
+	prepend CDATA #IMPLIED
+	property CDATA #REQUIRED
+	open CDATA #IMPLIED
+	close CDATA #IMPLIED
+	compareProperty CDATA #IMPLIED
+	compareValue CDATA #IMPLIED
+	estimate (parameters|orderbys) #IMPLIED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT isEmpty (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST isEmpty
+	prepend CDATA #IMPLIED
+	property CDATA #REQUIRED
+	open CDATA #IMPLIED
+	close CDATA #IMPLIED
+	compareProperty CDATA #IMPLIED
+	compareValue CDATA #IMPLIED
+	estimate (parameters|orderbys) #IMPLIED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT isNotEmpty (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST isNotEmpty
+	prepend CDATA #IMPLIED
+	property CDATA #REQUIRED
+	open CDATA #IMPLIED
+	close CDATA #IMPLIED
+	compareProperty CDATA #IMPLIED
+	compareValue CDATA #IMPLIED
+	estimate (parameters|orderbys) #IMPLIED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT isParameterPresent (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST isParameterPresent
+	estimate (parameters|orderbys) #IMPLIED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT isNotParameterPresent (#PCDATA | isParameterPresent | isNotParameterPresent | isEmpty | isNotEmpty | isNotNull | isNull | isNotEqual | isEqual | isGreaterThan | isGreaterEqual | isLessThan | isLessEqual)*>
+<!ATTLIST isNotParameterPresent
+	estimate (parameters|orderbys) #IMPLIED
+	joinSQL (true|false) "false"
+>
+
+<!ELEMENT PrepareParameters (PrepareParameter)*>
+
+<!ELEMENT PrepareParameter EMPTY>
+<!ATTLIST PrepareParameter 
+    prepend (out|in) #REQUIRED
+    jdbcType (BOOLEAN|DATE|DOUBLE|FLOAT|INTEGER|NUMERIC|TIME|TIMESTAMP|VARCHAR|ORACLECURSOR) #REQUIRED
+    property CDATA #IMPLIED
+	estimate (parameters|orderbys) #IMPLIED
+>
+
+<!ELEMENT Properties EMPTY>
+
+<!ELEMENT Controls (#PCDATA|Control)*>
+
+<!ELEMENT Control (#PCDATA|Column|ColumnGroup|DropDownItem|CheckGroupItem|RadioItem|FormGroup|Tab|TreeNode|TreeLevel|MenuItem|MenuBreak|Frame|DatasetInfos|Events|Parameters|Dataset|OutlookBarGroup|SubBar|ActionScript)*>
+<!ATTLIST Control 
+     id CDATA #REQUIRED
+     type (DataTable|AutoForm|TextEditor|CheckBox|Radio|CheckGroup|FieldLabel|DataLabel|Tree|DataTree|TreeGrid|DataPilot|PagePilot|DateDropDown|DatasetDropDown|DynamicDropDown|CustomDropDown|ListDropDown|Button|SubmitFormDatasetCommand|UpdateCommand|RPCCommand|RequestCommand|CommandQueue|ExportCommand|ReportCommand|Label|TabSet|Menu|MenuBar|OutlookBar|ScrollBar|ProgressBar|Calendar|SubWindow|GroupBox|SplitPanel|InterEditor|BarChart|PieChart|TimeSeriesChart|LineChart|ToolBar) #REQUIRED
+     ignored CDATA "false"
+     
+     buttonAppend (visible|hidden) "visible"
+     buttonCancel (visible|hidden) "hidden"
+     buttonDelete (visible|hidden) "visible"
+     buttonInsert (visible|hidden) "hidden"
+     buttonMoveFirst (visible|hidden) "hidden"
+     buttonMoveLast (visible|hidden) "hidden"
+     buttonMoveNext (visible|hidden) "visible"
+     buttonMovePrev (visible|hidden) "visible"
+     buttonNextPage (visible|hidden) "visible"
+     buttonPost (visible|hidden) "hidden"
+     buttonPrevPage (visible|hidden) "visible"
+     buttonGo (visible|hidden) "visible"
+     buttonFirstPage (visible|hidden) "hidden"
+     buttonLastPage (visible|hidden) "hidden"
+     
+     maxLink CDATA #IMPLIED
+     rowHeight CDATA #IMPLIED
+     dropDown CDATA #IMPLIED
+     
+     editable (true|false) "true"
+     height CDATA #IMPLIED
+     highlightSelection (true|false) "true"
+     maxRow CDATA #IMPLIED
+     readOnly CDATA #IMPLIED
+     showFooter CDATA "false"
+     showHeader (true|false) "true"
+     showIndicator (true|false) "true"
+     showHScrollBar (true|false) "true"
+     showVScrollBar (true|false) "true"
+     supportsPropertiesWindow (true|false) "true"
+     parityRow CDATA "2"
+     multiSelect (true|false) "false"
+     fixedColumn CDATA "0"
+     footerHeight CDATA #IMPLIED
+     headerHeight CDATA #IMPLIED
+     scrollMode (simple|record) #IMPLIED
+     
+     command CDATA #IMPLIED 
+     disabled CDATA "false" 
+     menu CDATA #IMPLIED 
+     toolTip CDATA #IMPLIED 
+     value CDATA #IMPLIED 
+     width CDATA #IMPLIED  	 
+     decorate CDATA #IMPLIED 	 
+     field CDATA #IMPLIED
+     initValue CDATA #IMPLIED
+
+     dataType (string|float|double|boolean|int|date|datetime|time|byte|short|long|bigdecimal) #IMPLIED
+     autoAnchorDate (true|false) #IMPLIED
+     maxlength CDATA #IMPLIED
+     upDown (true|false) #IMPLIED
+     bound CDATA #IMPLIED
+     selectOnly (true|false) #IMPLIED
+     editorType (text|textarea|checkbox|password) #IMPLIED
+     interDataset CDATA #IMPLIED
+     focusField CDATA #IMPLIED
+     writeField CDATA #IMPLIED
+     blurFields CDATA #IMPLIED
+     format CDATA #IMPLIED
+		 
+     cols CDATA #IMPLIED
+     itemDataset CDATA #IMPLIED
+
+     defaultControlWidth CDATA "160"
+     defaultLabelWidth CDATA "100"
+     firstGroupAsHeader (true|false) "true"
+     lastGroupAsFooter (true|false) "true"
+     showBorder (true|false) "false"
+     groupType (subwindow|groupbox|none) "groupbox"
+	 align (left|right|center) #IMPLIED
+     
+     target CDATA #IMPLIED
+     
+     tabIndex CDATA #IMPLIED
+     widthTabName CDATA "100"
+     isClosable (true|false) "false"
+     maxTabQuota CDATA "10"
+     autoRedimTab (true|false) "false"
+     draggableItem (true|false) "false"
+     tabOnDblClickClose (true|false) "false"
+     
+     itemWidth CDATA "128"
+     shadow (visible|hidden) #IMPLIED
+     popupContainer CDATA #IMPLIED
+     loadDataAction CDATA #IMPLIED
+     viaduct (true|false) "false"
+     
+     paramFields CDATA #IMPLIED
+     
+     showLoadingTip (true|false) "true"
+     passport CDATA #IMPLIED
+     async (true|false) "false"     
+     action CDATA #IMPLIED
+     method CDATA #IMPLIED
+     resolver CDATA #IMPLIED
+     commandType (Marmot|Script) #IMPLIED
+     
+     flushDataOnSuccess  (true|false) "false"
+     		           
+     confirmCancel (true|false) "true"
+     confirmDelete (true|false) "true"
+     visibility CDATA "visible"
+     tag CDATA #IMPLIED
+     context CDATA #IMPLIED
+     dataset CDATA #IMPLIED
+     
+     autoDropDown (true|false) "false"
+     path CDATA #IMPLIED
+     readFields CDATA #IMPLIED
+     writeFields CDATA #IMPLIED     
+     showColumnHeader (true|false) #IMPLIED
+     visibleFields CDATA #IMPLIED     
+     columnFields CDATA #IMPLIED
+     filterParameter CDATA #IMPLIED
+     visibleLabels CDATA #IMPLIED     
+     defaultLabel CDATA #IMPLIED
+     mapValue (true|false) "false"     
+     fixed CDATA #IMPLIED
+     warmUpDelay CDATA #IMPLIED
+     cachable (true|false) "true"
+     labelField CDATA #IMPLIED
+     valueField CDATA #IMPLIED
+     openMode (dropdown|subwindow) #IMPLIED
+	 autoSize (true|false) "true"
+     
+     showExpandButton CDATA "true"
+     expanded CDATA "true"
+     style CDATA #IMPLIED  
+     title CDATA #IMPLIED  
+     layout (flow|horizontal|vertical) #IMPLIED
+     
+     draggable CDATA #IMPLIED
+     orientation (vertical|horizontal) #IMPLIED
+     padding CDATA #IMPLIED 
+     position CDATA #IMPLIED 
+     showButtons CDATA "true"
+     
+     resizable CDATA "false"
+     showCloseButton (true|false) "false"
+     showMaximizeButton (true|false) "true"
+     showMinimizeButton (true|false) "false"
+     showMinimizeButton (true|false) "false"
+     showMenuButton (true|false) "false"
+     showNailButton (true|false) "false"
+     status (normal|maximize|minimize|hidden) "normal"
+     titleClickAction (no_action|maximize|minimize) #IMPLIED 
+     titleDblClickAction (no_action|maximize|minimize) #IMPLIED
+     left CDATA #IMPLIED
+     top CDATA #IMPLIED
+     
+     onValue CDATA #IMPLIED
+     offValue CDATA #IMPLIED
+     
+     animated CDATA #IMPLIED
+     currentGroup CDATA #IMPLIED
+     
+     min CDATA #IMPLIED
+     max CDATA #IMPLIED
+     bigChange CDATA "1"
+     smallChange CDATA "1"
+     pageSize CDATA "1"
+     showDraggingTip (true|false) "true"
+     dragMode (mousemove|mouseup) #IMPLIED
+     
+     exportMode (download|output) "download"
+     exportType (txt|xls|pdf|rtf|html) "xls"
+     fileName CDATA #IMPLIED
+     template CDATA #IMPLIED
+     onlyCurrentPage (true|false) "false"
+     fillData (sql|javabean) #IMPLIED
+     reportDatasets CDATA #IMPLIED
+     datasetParameterNames CDATA #IMPLIED
+     
+     categoryField CDATA #IMPLIED
+     dataField CDATA #IMPLIED
+     groupField CDATA #IMPLIED
+     dateField CDATA #IMPLIED
+     threeD (true|false) #IMPLIED
+     background CDATA #IMPLIED
+     foregroundAlpha CDATA #IMPLIED
+     upperMargin CDATA #IMPLIED
+     lowerMargin CDATA #IMPLIED
+     baseOutlinePaint CDATA #IMPLIED
+     basePaint CDATA #IMPLIED
+     series CDATA #IMPLIED
+     itemMargin CDATA #IMPLIED
+     maxBarWidth CDATA #IMPLIED
+     itemLabelsVisible (true|false) #IMPLIED
+     domainAxisLocation (1|2|3|4) #IMPLIED
+     rangeAxisLocation (1|2|3|4) #IMPLIED
+     circular (true|false) #IMPLIED
+     explodeIndex CDATA #IMPLIED
+     timeAxisLabel CDATA #IMPLIED
+     valueAxisLabel CDATA #IMPLIED
+     categoryAxisLabel CDATA #IMPLIED
+     subTitle CDATA #IMPLIED
+     dateFormat CDATA #IMPLIED
+     datePeriod (year|month|day|hour|minute|second|week|quarter) #IMPLIED
+     shapesVisible (true|false) "true"
+     
+     accessKey CDATA #IMPLIED
+
+     recursiveKeyFields CDATA #IMPLIED 
+     recursiveKeyParameters CDATA #IMPLIED 
+     expandLevel CDATA #IMPLIED
+     treeColumn CDATA #IMPLIED
+     hasChildField CDATA #IMPLIED
+     
+     showText (true|false) "true"
+     textPattern CDATA #IMPLIED
+     
+     showQuickHelp (true|false) "false"
+     helpDelay CDATA #IMPLIED
+>
+
+<!ELEMENT Column (#PCDATA|Events)*>
+<!ATTLIST Column 
+     name CDATA #REQUIRED
+     field CDATA #IMPLIED
+     align (left|right|center) #IMPLIED
+     dropDown CDATA #IMPLIED
+     dataOrder CDATA "false"
+     editorType (text|textarea|checkbox|password) #IMPLIED 
+     headerClickable CDATA "false"
+     label CDATA #IMPLIED
+     noWrap (true|false) "true"
+     readOnly CDATA #IMPLIED
+     sortable CDATA "false"
+     toolTip CDATA #IMPLIED 
+     valign (top|center|buttom) "center"
+     visibility CDATA "visible"
+     width CDATA #IMPLIED
+     pattern (position) #IMPLIED
+     footerValue CDATA #IMPLIED
+     rendererType (text|textarea|checkbox|radio|checkgroup) #IMPLIED
+     showQuickHelp (true|false) "false"
+     helpDelay CDATA #IMPLIED
+     fullSelected (true|false) "true"
+>	
+
+<!ELEMENT ColumnGroup (#PCDATA|Column)*>
+<!ATTLIST ColumnGroup 
+    name CDATA #IMPLIED 
+    label CDATA #IMPLIED 
+    align (left|right|center) "center" 
+    noWrap (true|false) "true" 
+    toolTip CDATA #IMPLIED 
+    valign (top|center|buttom) "center" 
+    visibility CDATA "visible"
+>
+
+<!ELEMENT DropDownItem EMPTY>
+<!ATTLIST DropDownItem 
+    label CDATA #IMPLIED 
+    value CDATA #IMPLIED
+>
+
+<!ELEMENT CheckGroupItem EMPTY>
+<!ATTLIST CheckGroupItem 
+    value CDATA #IMPLIED 
+    label CDATA #IMPLIED
+>
+
+<!ELEMENT RadioItem EMPTY>
+<!ATTLIST RadioItem 
+    value CDATA #IMPLIED 
+    label CDATA #IMPLIED
+>
+
+<!ELEMENT OutlookBarGroup EMPTY>
+<!ATTLIST OutlookBarGroup 
+    label CDATA #IMPLIED 
+    name CDATA #REQUIRED
+    icon CDATA #IMPLIED 
+    disabled (true|false) "false"
+    visible (true|false) "true"
+    padding CDATA #IMPLIED 
+>
+
+<!ELEMENT FormGroup (Element)*>
+<!ATTLIST FormGroup 
+    title CDATA #IMPLIED 
+    columnCount CDATA "2"
+    defaultControlWidth CDATA #IMPLIED
+    defaultLabelWidth CDATA #IMPLIED
+    height CDATA #IMPLIED  
+    showBevel (true|false) "true"
+    visible (true|false) "true" 
+    width CDATA #IMPLIED  
+    showBorder (true|false) "false" 
+    contentAlign (left|center|right) "left"
+    contentVAlign (top|center|buttom) "top"
+    tag CDATA #IMPLIED 
+    name CDATA #REQUIRED
+    expanded CDATA #IMPLIED 
+    icon CDATA #IMPLIED 
+    centerSpace CDATA "20"
+	showExpandButton (true|false) "true" 
+>
+
+<!ELEMENT Element (FieldLabel|DataLabel|TextEditor|CheckBox|CheckGroup|Radio|Label)*>
+<!ATTLIST Element 
+    name  CDATA #REQUIRED 
+    type (StaticLabel|TextEditor|CheckBox|CheckGroup|Radio|Custom|Label|Renderer) #IMPLIED  
+    colSpan CDATA "1" 
+    controlAlign (left|center|right) "left" 
+    controlVAlign (top|center|buttom) "center"
+    field CDATA #IMPLIED
+    labelAlign (left|center|right) "right"
+    labelVAlign (top|center|buttom) #IMPLIED 
+    rowSpan CDATA "1"  
+    showLabel (true|false) #IMPLIED 
+    visibility CDATA "visible"
+    controlId CDATA #IMPLIED
+    tag CDATA #IMPLIED 
+    width CDATA #IMPLIED 
+>
+<!ELEMENT FieldLabel (#PCDATA|Events)*>
+<!ATTLIST FieldLabel 
+     toolTip CDATA #IMPLIED 
+     visibility CDATA "visible"
+     tag CDATA #IMPLIED
+     style CDATA #IMPLIED
+>
+<!ELEMENT DataLabel (#PCDATA|Events)*>
+<!ATTLIST DataLabel 
+     toolTip CDATA #IMPLIED 
+     visibility CDATA "visible"
+     tag CDATA #IMPLIED
+     width CDATA #IMPLIED  
+     style CDATA #IMPLIED
+>
+<!ELEMENT TextEditor (#PCDATA|Events)*>
+<!ATTLIST TextEditor 
+     toolTip CDATA #IMPLIED 
+     visibility CDATA "visible"
+     tag CDATA #IMPLIED
+     dropDown CDATA #IMPLIED
+     autoAnchorDate (true|false) #IMPLIED
+     maxlength CDATA #IMPLIED
+     upDown (true|false) #IMPLIED
+     bound CDATA #IMPLIED
+     initValue CDATA #IMPLIED
+     disabled CDATA #IMPLIED
+     selectOnly (true|false) #IMPLIED
+     editorType (text|textarea|checkbox|password) #IMPLIED
+     width CDATA #IMPLIED  
+     height CDATA #IMPLIED 
+     readOnly CDATA #IMPLIED      
+     accessKey CDATA #IMPLIED
+     style CDATA #IMPLIED
+>
+<!ELEMENT CheckBox (#PCDATA|Events)*>
+<!ATTLIST CheckBox 
+     visibility CDATA "visible"
+     tag CDATA #IMPLIED
+     readOnly CDATA #IMPLIED 
+     disabled CDATA #IMPLIED
+     accessKey CDATA #IMPLIED
+>
+<!ELEMENT CheckGroup (#PCDATA|CheckGroupItem|Events)*>
+<!ATTLIST CheckGroup 
+     visibility CDATA "visible"
+     tag CDATA #IMPLIED
+     readOnly CDATA #IMPLIED 
+     disabled CDATA #IMPLIED
+     cols CDATA "4"
+     initValue CDATA #IMPLIED
+     itemDataset CDATA #IMPLIED
+     valueField CDATA #IMPLIED
+     labelField CDATA #IMPLIED
+     width CDATA #IMPLIED
+     accessKey CDATA #IMPLIED
+>
+<!ELEMENT Radio (#PCDATA|RadioItem|Events)*>
+<!ATTLIST Radio 
+     visibility CDATA "visible"
+     tag CDATA #IMPLIED
+     readOnly CDATA #IMPLIED 
+     disabled CDATA #IMPLIED
+     cols CDATA "4"
+     initValue CDATA #IMPLIED
+     itemDataset CDATA #IMPLIED
+     valueField CDATA #IMPLIED
+     labelField CDATA #IMPLIED
+     width CDATA #IMPLIED
+     accessKey CDATA #IMPLIED
+>
+<!ELEMENT Label (#PCDATA)>
+<!ATTLIST Label 
+     text CDATA #IMPLIED
+     style CDATA #IMPLIED
+>
+
+<!ELEMENT Tab EMPTY>
+<!ATTLIST Tab 
+    enabled (true|false) "true"
+    label CDATA #IMPLIED 
+    name CDATA #IMPLIED
+    visible (true|false) "true"
+    type (TabItem|FrameTab) "TabItem"
+    path CDATA #IMPLIED
+    isClosable (true|false) #IMPLIED 
+    padding CDATA "2"
+>
+
+<!ELEMENT TreeNode (TreeNode)*>
+<!ATTLIST TreeNode 
+    checkable (true|false) "false"
+    checked (true|false) "false"
+    expanded (true|false) "false"
+    expandedIcon CDATA #IMPLIED
+    hasChild (true|false) "true"
+    icon CDATA #IMPLIED
+    label CDATA #IMPLIED
+    path CDATA #IMPLIED
+    tag CDATA #IMPLIED 
+>
+
+<!ELEMENT TreeLevel (TreeLevel)*>
+<!ATTLIST TreeLevel 
+    name CDATA #REQUIRED
+    type (Simple|Recursive) #REQUIRED
+    dataset CDATA  #IMPLIED
+    checkable (true|false) "false"
+    checked (true|false) "false"
+    expanded (true|false) "false"
+    expandedIcon CDATA #IMPLIED
+    expendedIconField CDATA #IMPLIED
+    hasChild (true|false) "true"
+    hasMore (true|false) "false" 
+    iconField CDATA #IMPLIED
+    labelField CDATA #IMPLIED
+    moreClearOldNode (true|false) "false" 
+    icon CDATA #IMPLIED
+    label CDATA #IMPLIED
+    path CDATA #IMPLIED
+    tag CDATA #IMPLIED 
+    recursiveKeyFields CDATA #IMPLIED 
+    recursiveKeyParameters CDATA #IMPLIED 
+    detailKeyParameters CDATA #IMPLIED 
+    masterKeyFields CDATA #IMPLIED 
+    expandLevel CDATA #IMPLIED 
+    hasChildField CDATA #IMPLIED
+>
+
+<!ELEMENT MenuItem (MenuItem|MenuBreak)*>
+<!ATTLIST MenuItem 
+    command CDATA #IMPLIED
+    disabled  (true|false) "false"
+    disabledIcon CDATA #IMPLIED
+    icon CDATA #IMPLIED
+    label CDATA #IMPLIED
+    name CDATA #REQUIRED
+    path CDATA #IMPLIED
+    visible (true|false) "true"
+    accessKey CDATA #IMPLIED
+>
+
+<!ELEMENT MenuBreak EMPTY>
+
+<!ELEMENT Frame EMPTY>
+<!ATTLIST Frame 
+    center (true|false) "true"
+    height CDATA "100"
+    left CDATA #IMPLIED
+    resizable (true|false) "false"
+    statusbar (true|false) "false"
+    scroll (true|false) "false"
+    target (_self|_blank|_parent|_top|_modal_dialog|_modeless_dialog|_exclusive_subwindow|_subwindow) #IMPLIED 
+    top CDATA #IMPLIED
+    width CDATA "100"
+>
+
+<!ELEMENT DatasetInfos (#PCDATA|DatasetInfo)*>
+
+<!ELEMENT DatasetInfo EMPTY>
+<!ATTLIST DatasetInfo 
+    clearSelectionOnSuccess  (true|false) "false"
+    deleteSelectionOnSuccess (true|false) "false"
+    flushDataOnSuccess (true|false) #IMPLIED 
+    submitScope (all|all-change|current|selected|all-visible) "all-change"
+    dataset CDATA #REQUIRED
+>
+
+<!ELEMENT Events (#PCDATA|Event)*>
+
+<!ELEMENT Event (#PCDATA)>
+<!ATTLIST Event 
+    name CDATA #REQUIRED
+>	
+
+<!ELEMENT Include (MasterDataset?,DetailDataset?,ConditionDataset?,AutoForm?,DataUpdate?)> 
+<!ATTLIST Include 
+    template CDATA #IMPLIED
+    file CDATA #IMPLIED
+    loadDatasets CDATA #IMPLIED
+    loadControls CDATA #IMPLIED
+    loadEvents CDATA #IMPLIED
+>	
+
+<!ELEMENT MasterDataset EMPTY>
+<!ATTLIST MasterDataset 
+    name CDATA #REQUIRED
+    tableVisibleFields CDATA #IMPLIED
+    formVisibleFields CDATA #IMPLIED
+    sortFields CDATA #IMPLIED
+    showFooter (true|false) "false"
+    showPosition (true|false) "false"
+    parityRow CDATA "2"
+    title CDATA #IMPLIED
+>	
+
+<!ELEMENT DetailDataset EMPTY>
+<!ATTLIST DetailDataset 
+    name CDATA #REQUIRED
+    tableVisibleFields CDATA #IMPLIED
+    formVisibleFields CDATA #IMPLIED
+    sortFields CDATA #IMPLIED
+    showFooter (true|false) "false"
+    showPosition (true|false) "false"
+    parityRow CDATA "2"
+    title CDATA #IMPLIED
+>	
+
+<!ELEMENT ConditionDataset EMPTY>
+<!ATTLIST ConditionDataset 
+    name CDATA #REQUIRED
+>	
+
+<!ELEMENT AutoForm EMPTY>
+<!ATTLIST AutoForm 
+    defaultLabelWidth CDATA #IMPLIED
+    defaultControlWidth CDATA #IMPLIED
+    columnCount CDATA #IMPLIED
+>	
+
+<!ELEMENT DataUpdate EMPTY>
+<!ATTLIST DataUpdate 
+    searchOnly (true|false) "false"
+    flushDataOnSuccess (true|false) "false"
+    action CDATA #IMPLIED
+>	
+
+<!ELEMENT SubBar (ToolGroup)*>
+<!ATTLIST SubBar 
+    name  CDATA #REQUIRED 
+    inline (true|false) "false"
+    visible (true|false) "true"
+>	
+
+<!ELEMENT ToolGroup (Tool|ToolRenderer)*>
+<!ATTLIST ToolGroup 
+    name  CDATA #REQUIRED 
+    type (pop|down|default) #IMPLIED
+    visible (true|false) "true"
+    disabled (true|false) "false"
+>	
+
+<!ELEMENT Tool EMPTY>
+<!ATTLIST Tool
+    name CDATA #REQUIRED 
+    visible (true|false) "true"
+    disabled (true|false) "false"
+    icon CDATA #REQUIRED
+    label CDATA #REQUIRED
+    toolTip CDATA #IMPLIED
+    showLabel (true|false) "false"
+    menu CDATA #IMPLIED
+    disabledIcon CDATA #IMPLIED
+    downIcon CDATA #IMPLIED
+    command CDATA #IMPLIED
+    accessKey CDATA #IMPLIED
+    showQuickHelp (true|false) "false"
+    helpDelay CDATA #IMPLIED
+>
+
+<!ELEMENT ToolRenderer EMPTY>
+<!ATTLIST ToolRenderer
+	controlId CDATA #REQUIRED
+    visible (true|false) "true"
+>
+
+<!ELEMENT ActionScript (#PCDATA)>
+<!ATTLIST ActionScript
+    type (js|php) "js"
+    include CDATA #IMPLIED
+>

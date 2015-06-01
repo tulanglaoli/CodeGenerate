@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenerate", "CodeGenerate\CodeGenerate.csproj", "{1D93C713-70B1-4572-BF02-2C9703E64E55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xmldocment", "xmldocment\xmldocment.csproj", "{A819C8F0-180A-4BC3-A011-2401273BE5AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLibrary", "BaseLibrary\BaseLibrary.csproj", "{AEE9506D-CE32-48B4-9D89-DD97F8D6A54A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D93C713-70B1-4572-BF02-2C9703E64E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D93C713-70B1-4572-BF02-2C9703E64E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D93C713-70B1-4572-BF02-2C9703E64E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D93C713-70B1-4572-BF02-2C9703E64E55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A819C8F0-180A-4BC3-A011-2401273BE5AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A819C8F0-180A-4BC3-A011-2401273BE5AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A819C8F0-180A-4BC3-A011-2401273BE5AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A819C8F0-180A-4BC3-A011-2401273BE5AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEE9506D-CE32-48B4-9D89-DD97F8D6A54A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEE9506D-CE32-48B4-9D89-DD97F8D6A54A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEE9506D-CE32-48B4-9D89-DD97F8D6A54A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEE9506D-CE32-48B4-9D89-DD97F8D6A54A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
