@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xmldocment", "xmldocment\xm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLibrary", "BaseLibrary\BaseLibrary.csproj", "{AEE9506D-CE32-48B4-9D89-DD97F8D6A54A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CssManager", "CssManager\CssManager.csproj", "{58BD6E68-3C1A-425A-9C7A-F3655A1281A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AEE9506D-CE32-48B4-9D89-DD97F8D6A54A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEE9506D-CE32-48B4-9D89-DD97F8D6A54A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEE9506D-CE32-48B4-9D89-DD97F8D6A54A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58BD6E68-3C1A-425A-9C7A-F3655A1281A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58BD6E68-3C1A-425A-9C7A-F3655A1281A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58BD6E68-3C1A-425A-9C7A-F3655A1281A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58BD6E68-3C1A-425A-9C7A-F3655A1281A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
