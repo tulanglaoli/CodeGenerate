@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLibrary", "BaseLibrary\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CssManager", "CssManager\CssManager.csproj", "{58BD6E68-3C1A-425A-9C7A-F3655A1281A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTDManager", "DTDManager\DTDManager.csproj", "{6BEDDE85-8BF5-44BB-A531-55C2275DA079}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{58BD6E68-3C1A-425A-9C7A-F3655A1281A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58BD6E68-3C1A-425A-9C7A-F3655A1281A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58BD6E68-3C1A-425A-9C7A-F3655A1281A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BEDDE85-8BF5-44BB-A531-55C2275DA079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BEDDE85-8BF5-44BB-A531-55C2275DA079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BEDDE85-8BF5-44BB-A531-55C2275DA079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BEDDE85-8BF5-44BB-A531-55C2275DA079}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

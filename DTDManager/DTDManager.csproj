@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{58BD6E68-3C1A-425A-9C7A-F3655A1281A2}</ProjectGuid>
+    <ProjectGuid>{6BEDDE85-8BF5-44BB-A531-55C2275DA079}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CssManager</RootNamespace>
-    <AssemblyName>CssManager</AssemblyName>
+    <RootNamespace>DTDManager</RootNamespace>
+    <AssemblyName>DTDManager</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTDATTLISTItem.cs" />
+    <Compile Include="DTDBody.cs" />
+    <Compile Include="DTDElement.cs" />
+    <Compile Include="DTDManager.cs" />
+    <Compile Include="DTDParse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
