@@ -1,7 +1,7 @@
 ﻿
 namespace DTDManager
 {
-    class DTDElement
+    public class DTDElement
     {
         private string _Name;
         public string Name

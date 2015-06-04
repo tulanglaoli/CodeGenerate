@@ -205,12 +205,22 @@ namespace DTDManager
                         EatSpecialKey("\t\n\r ");
                         DB.Name = bn;
                         DB.DTDelement.Name = bn;
-                        p = ParseState.ElementValue;
+                        if (GetCurrentChar() == '(')
+                            p = ParseState.Islist;
+                        else
+                            p = ParseState.Nolist;
                         break;
-                    case ParseState.ElementValue:
-                        string[] l = ParseWord("\t\n\r )+>*").Replace("(", "").Split(new char[1] { '|' }, System.StringSplitOptions.RemoveEmptyEntries);
+                    case ParseState.Islist:
+                        string il = ParseWord(")").Remove(0);
                         EatSpecialKey(")");
+                        string[] l = il.Split(new char[1] { '|' });
                         DB.DTDelement.ElementValue = l;
+                        p = ParseState.Type;
+                        break;
+                    case ParseState.Nolist:
+                        string i = ParseWord("\t\n\r >");
+                        EatSpecialKey("\t\n\r ");
+                        DB.DTDelement.ElementValue = new string[1]{i};
                         p = ParseState.Type;
                         break;
                     case ParseState.Type:
@@ -227,12 +237,14 @@ namespace DTDManager
                                 p = ParseState.ItemName;
                             else
                                 p = ParseState.Isend;
+
                         }
                         else
                         {
                             error = "Element's Name:" + DB.Name + "!= ATTLIST's Name:" + bn2;
                             p = ParseState.error; ;
                         }
+                            
                         break;
                     case ParseState.ItemName:
                         string n = ParseWord("\t\n\r ");
@@ -260,7 +272,6 @@ namespace DTDManager
                         }
                         else
                         {
-                            EatSpecialKey("\t\n\r ");
                             DE.DefaultValue = d;
                             DB.DTDAttList.Add(DE);
                             DE = new DTDATTLISTItem();
@@ -285,6 +296,7 @@ namespace DTDManager
                             }
                         }
                         
+                        
                         break;
                     case ParseState.End:
                         break;
@@ -302,7 +314,7 @@ namespace DTDManager
             Start=1,
             ElementOrATTList,
             BodyName,
-            ElementValue,
+            Value,
             Type,
             BodyName2,
             ItemName,

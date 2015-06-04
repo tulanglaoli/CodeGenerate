@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
+using System.Text; 
 
 namespace DTDManager
 {
@@ -10,6 +9,8 @@ namespace DTDManager
     {
         static void Main(string[] args)
         {
+            DTDDocment.Instance.Load(@"F:\ERP\DNet\CodeGenerate\feather-3.0.dtd");
+            Console.Read();
         }
     }
 }

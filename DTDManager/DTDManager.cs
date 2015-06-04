@@ -1,12 +1,26 @@
 ﻿using System.Collections;
 using System.IO;
-
+using System.Collections.Generic;
 
 
 namespace DTDManager
 {
-    public class DTDManager
+    public class DTDDocment
     {
+        private static DTDDocment _instance;
+
+        public static DTDDocment Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new DTDDocment(); 
+                }
+                return _instance;
+            }
+        }
+
         private string _Text;
         public string Text
         {
@@ -20,30 +34,16 @@ namespace DTDManager
             }
         }
 
-        private ArrayList _Elements;
-        public ArrayList Elements
+        private List<DTDBody> _Docment;
+        public List<DTDBody> Docment
         {
             get
             {
-                return _Elements;
+                return _Docment;
             }
             set
             {
-                _Elements = value;
-            }
-        }
-
-        public DTDBody this[string name]
-        {
-            get
-            {
-                for (int i = 0; i < Elements.Count; i++)
-                {
-                    if (((DTDBody)Elements[i]).Name.Equals(name))
-                        return (DTDBody)Elements[i];
-                }
-
-                return null;
+                _Docment = value;
             }
         }
 
@@ -57,13 +57,18 @@ namespace DTDManager
             
         }
 
-        public DTDManager(string File)
+        public DTDDocment(string File)
         {
             _File = File;
         }
 
+        public DTDDocment()
+        {
+        }
+
         public void Load(string file)
         {
+            _File = file;
             using (StreamReader sr = new StreamReader(file))
             {
                 Text = sr.ReadToEnd();
@@ -72,7 +77,7 @@ namespace DTDManager
 
             DTDParse parse = new DTDParse();
             parse.Source = Text;
-            Elements = parse.Parse();
+            _Docment = parse.Parse();
 
         }
 

@@ -2,7 +2,7 @@
 
 namespace DTDManager
 {
-    class DTDBody
+    public class DTDBody
     {
         private string _Name;
         public string Name
