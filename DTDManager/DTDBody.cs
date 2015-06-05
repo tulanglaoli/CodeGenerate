@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using System.Text;
 namespace DTDManager
 {
     public class DTDBody
@@ -60,5 +60,35 @@ namespace DTDManager
         {
             this._DTDATTList.Add(DAL);
         }
+
+        public override string ToString()
+        {
+            
+
+            return string.Format(
+@"*********************************
+DTDBody:
+Name:
+[{0}]
+DTDelement:
+{1}
+DTDAttList:
+{2}
+***********************************",
+_Name, _dtdelement.ToString(), ATTListToString());
+        }
+
+        string ATTListToString()
+        {
+            StringBuilder SB = new StringBuilder();
+            foreach (DTDATTLISTItem dt in _DTDATTList)
+            {
+                SB.Append(string.Format("\n{0}", dt.ToString()));
+            }
+            return SB.ToString();
+        }
+
     }
+
+
 }

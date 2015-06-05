@@ -62,6 +62,26 @@ namespace DTDManager
         {
 
         }
+
+        public override string ToString()
+        {
+            string s = "";
+            foreach (string v in _TypeValue)
+            {
+                s = string.Format("{0}[{1}]", s, v);
+            }
+            return string.Format(
+@"===================================
+DTDATTLISTItem:
+Name:
+[{0}]
+_TypeValue:
+{1}
+_DefaultValue:
+[{2}]
+===================================",
+_Name, s, _DefaultValue);
+        }
         
     }
 }

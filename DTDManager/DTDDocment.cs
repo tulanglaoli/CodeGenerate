@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.IO;
+using System.Text;
 using System.Collections.Generic;
 
 
@@ -66,6 +67,16 @@ namespace DTDManager
         {
         }
 
+
+        public override string ToString()
+        {
+            StringBuilder S = new StringBuilder();
+            foreach (DTDBody DB in _Docment)
+            {
+                S.Append(string.Format("\n{0}", DB.ToString()));
+            }
+            return S.ToString() ;
+        }
         public void Load(string file)
         {
             _File = file;

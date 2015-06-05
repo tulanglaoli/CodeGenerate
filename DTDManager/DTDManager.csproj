@@ -45,7 +45,7 @@
     <Compile Include="DTDATTLISTItem.cs" />
     <Compile Include="DTDBody.cs" />
     <Compile Include="DTDElement.cs" />
-    <Compile Include="DTDManager.cs" />
+    <Compile Include="DTDDocment.cs" />
     <Compile Include="DTDParse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

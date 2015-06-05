@@ -162,6 +162,8 @@ namespace DTDManager
             return ListDTD;
         }
 
+       
+
         public DTDBody Parse(ref ParseState p)
         {
             DTDBody DB = new DTDBody();
@@ -240,7 +242,6 @@ namespace DTDManager
                         if (DE == null)
                         {
                             DE = new DTDATTLISTItem();
-                            
                         }
                         DE.Name = n;
                         p = ParseState.TypeValue;
@@ -252,7 +253,8 @@ namespace DTDManager
                         p = ParseState.DefaultValue;
                         break;
                     case ParseState.DefaultValue:
-                        string d = ParseWord("\t\n\r ");
+                        string d = ParseWord("\t\n\r >");
+                        EatSpecialKey("\t\n\r ");
                         if (GetCurrentChar() == '>' || d.Contains(">"))
                         {
                             DE.DefaultValue = d.Replace(">", "");
@@ -284,7 +286,6 @@ namespace DTDManager
                                 p = ParseState.End;
                             }
                         }
-                        
                         break;
                     case ParseState.End:
                         break;
