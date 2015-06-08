@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DTDManager</RootNamespace>
     <AssemblyName>DTDManager</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -46,6 +46,7 @@
     <Compile Include="DTDBody.cs" />
     <Compile Include="DTDElement.cs" />
     <Compile Include="DTDDocment.cs" />
+    <Compile Include="DTDManager.cs" />
     <Compile Include="DTDParse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

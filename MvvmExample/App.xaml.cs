@@ -5,13 +5,12 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace CodeGenerate
+namespace MvvmExample
 {
     /// <summary>
-    /// App.xaml 的交互逻辑
+    /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
     {
-
     }
 }
