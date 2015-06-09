@@ -55,9 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Elementpanel.xaml.cs">
-      <DependentUpon>Elementpanel.xaml</DependentUpon>
+    <Compile Include="ElementWindow.xaml.cs">
+      <DependentUpon>ElementWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Converters.cs" />
+    <Compile Include="Helpers\DialogCloser.cs" />
+    <Compile Include="Helpers\IClosableViewModel.cs" />
+    <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="DTDElemet.cs" />
+    <Compile Include="ViewModelBase.cs" />
+    <Compile Include="ViewModelMain.cs" />
     <Page Include="Dictionary1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -74,7 +81,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Elementpanel.xaml">
+    <Page Include="ElementWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

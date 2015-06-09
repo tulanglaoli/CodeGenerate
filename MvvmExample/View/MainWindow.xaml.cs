@@ -14,7 +14,7 @@ namespace MvvmExample.ViewModel
         {
             var win = new Window1 { DataContext = new ViewModelWindow1(tb1.Text) };
             win.Show();
-           // this.Close();
+            this.Close();
         }
     }
 }
