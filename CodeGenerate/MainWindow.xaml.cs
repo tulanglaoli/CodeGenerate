@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CodeGenerate.ViewModel;
 
 namespace CodeGenerate
 {
@@ -23,6 +24,13 @@ namespace CodeGenerate
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var win = new ElementWindow { DataContext = new ViewModelMain() };
+            win.Show();
+            this.Close();
         }
     }
 }
