@@ -24,36 +24,16 @@ namespace CodeGenerate
             
             InitializeComponent();
             //动态添加数据
-            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            while (ViewModelMain.Instance.People.Count > ElementGrid.RowDefinitions.Count-1)//后面减掉一是因为外面已经有一个了
-            {
-                ElementGrid.RowDefinitions.Add(new RowDefinition());
-                Label A = new Label();
-                A.SetBinding(Label.ContentProperty, new Binding(string.Format("People[{0}].ElementName2", ElementGrid.RowDefinitions.Count - 2)));
-                A.SetValue(Grid.ColumnProperty, 1);
-                A.SetValue(Grid.RowProperty, ElementGrid.RowDefinitions.Count-1);
-                ElementGrid.Children.Add(A);
+            ViewModelMain.Instance.AddControl(ElementGrid);
+        }
 
-                TextBox B = new TextBox();
-                B.SetBinding(TextBox.TextProperty, new Binding(string.Format("People[{0}].ElementName2", ElementGrid.RowDefinitions.Count - 2)));
-                B.SetValue(Grid.ColumnProperty, 2);
-                B.SetValue(Grid.RowProperty, ElementGrid.RowDefinitions.Count-1);
-                ElementGrid.Children.Add(B);
-
-                ComboBox C = new ComboBox();
-                C.SetBinding(ComboBox.SelectedItemProperty, new Binding(string.Format("People[{0}].ElementName", ElementGrid.RowDefinitions.Count - 2)));
-                C.SetValue(Grid.ColumnProperty, 3);
-                C.SetValue(Grid.RowProperty, ElementGrid.RowDefinitions.Count-1);
-                foreach (string ViewModel in ViewModelMain.Instance.People[ElementGrid.RowDefinitions.Count - 2].ElementName3)
-                {
-                    C.Items.Add(ViewModel);
-                }
-                ElementGrid.Children.Add(C);
-            }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

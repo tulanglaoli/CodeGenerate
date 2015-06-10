@@ -1,0 +1,26 @@
+﻿<Window x:Class="CodeGenerate.MainWindows"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindows" Height="auto" Width="auto" MinWidth="700">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.8*"></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <TabControl Margin="10,10,0,0"  >
+                <TabItem Name="File1" Header="TabItem">
+                    <Grid Background="#FFE5E5E5">
+                        <TextBox Name="File1_Text" Margin="0,0,0,0" TextWrapping="Wrap" Text="" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="File1_Text_SelectionChanged"  />
+
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Button Content="Button"  Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+            <Label Name="Label_Postion" Content="Label"  Margin="0,20,0,0" VerticalAlignment="Top"/>
+        </Grid>
+
+    </Grid>
+</Window>

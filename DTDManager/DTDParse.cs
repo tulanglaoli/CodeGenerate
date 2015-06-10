@@ -257,13 +257,13 @@ namespace DTDManager
                         EatSpecialKey("\t\n\r ");
                         if (GetCurrentChar() == '>' || d.Contains(">"))
                         {
-                            DE.DefaultValue = d.Replace(">", "");
+                            DE.DefaultValue = d.Replace(">", "").Replace("\"", "");
                             p = ParseState.Isend;
                         }
                         else
                         {
                             EatSpecialKey("\t\n\r ");
-                            DE.DefaultValue = d;
+                            DE.DefaultValue = d.Replace("\"", "");
                             DB.DTDAttList.Add(DE);
                             DE = new DTDATTLISTItem();
                             p = ParseState.ItemName;

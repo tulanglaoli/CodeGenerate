@@ -62,14 +62,17 @@
     <Compile Include="Helpers\DialogCloser.cs" />
     <Compile Include="Helpers\IClosableViewModel.cs" />
     <Compile Include="Helpers\RelayCommand.cs" />
-    <Compile Include="DTDElemet.cs" />
-    <Compile Include="ViewModelBase.cs" />
-    <Compile Include="ViewModelMain.cs" />
+    <Compile Include="Model\DTDATTLISTItemModel.cs" />
+    <Compile Include="MainWindows.xaml.cs">
+      <DependentUpon>MainWindows.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ViewModelBase.cs" />
+    <Compile Include="Model\ViewModelMain.cs" />
     <Page Include="Dictionary1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -77,11 +80,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ElementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,6 +122,16 @@
   </ItemGroup>
   <ItemGroup>
     <SplashScreen Include="SplashScreen1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DTDManager\DTDManager.csproj">
+      <Project>{6bedde85-8bf5-44bb-a531-55c2275da079}</Project>
+      <Name>DTDManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xmldocment\xmldocment.csproj">
+      <Project>{a819c8f0-180a-4bc3-a011-2401273be5aa}</Project>
+      <Name>xmldocment</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
