@@ -43,7 +43,7 @@ namespace CodeGenerate
             {
                 sb.AppendLine(xn.OuterXml);
             }
-            File1_Text.Text = sb.ToString() ;
+           
 
         }
 
@@ -56,9 +56,20 @@ namespace CodeGenerate
 
         private void File1_Text_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            Label_Postion.Content = File1_Text.Text[File1_Text.SelectionStart];
+
+            //Label_Postion.Content = File1_Text.Text[File1_Text.SelectionStart];
         }
 
-      
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (File1_Text != null)
+            {
+                if (File1_Text.Selection.GetPropertyValue(Run.FontWeightProperty) is FontWeight && ((FontWeight)File1_Text.Selection.GetPropertyValue(Run.FontWeightProperty)) == FontWeights.Normal)
+                    File1_Text.Selection.ApplyPropertyValue(Run.FontWeightProperty, FontWeights.Bold);
+                else
+                    File1_Text.Selection.ApplyPropertyValue(Run.FontWeightProperty, FontWeights.Normal);
+            }
+        }
+
     }
 }
